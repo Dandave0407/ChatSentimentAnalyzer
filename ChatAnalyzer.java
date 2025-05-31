@@ -25,7 +25,7 @@ public class ChatAnalyzer {
         ArrayList<String> negativeWords = FileManager.readWordList(negativeFile);
 
         ArrayList<ChatEntry> entries = FileManager.readMessages(messageFile);
-        processEntriesRecursively(entries, 0, positiveWords, negativeWords);
+        processEntries(entries, 0, positiveWords, negativeWords);
         entries = Sorter.mergeSort(entries);
         FileManager.writeMessages(outputFile, entries);
     }
@@ -41,7 +41,7 @@ public class ChatAnalyzer {
      * @param positiveWords -list of words indicating positive sentiment
      * @param negativeWords -list of words indicating negative sentiment
      */
-    private void processEntriesRecursively(ArrayList<ChatEntry> entries, int index, ArrayList<String> positiveWords, ArrayList<String> negativeWords) {
+    private void processEntries(ArrayList<ChatEntry> entries, int index, ArrayList<String> positiveWords, ArrayList<String> negativeWords) {
         if (index >= entries.size()) {
             return;
         }
@@ -56,6 +56,6 @@ public class ChatAnalyzer {
         }
         entries.set(index, newEntry);
 
-        processEntriesRecursively(entries, index + 1, positiveWords, negativeWords);
+        processEntries(entries, index + 1, positiveWords, negativeWords);
     }
 } 

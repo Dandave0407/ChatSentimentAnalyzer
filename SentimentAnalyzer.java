@@ -20,7 +20,7 @@ public class SentimentAnalyzer {
      */
     public static int analyzeSentiment(String message, ArrayList<String> positiveWords, ArrayList<String> negativeWords) {
         String[] words = message.toLowerCase().split("\\s+");
-        return analyzeSentimentRecursive(words, 0, positiveWords, negativeWords);
+        return analyzeSentimentR(words, 0, positiveWords, negativeWords);
     }
 
     /**
@@ -35,7 +35,7 @@ public class SentimentAnalyzer {
      * @param negativeWords -list of words indicating negative sentiment
      * @return score -cumulative sentiment score for the remaining words
      */
-    private static int analyzeSentimentRecursive(String[] words, int index, ArrayList<String> positiveWords, ArrayList<String> negativeWords) {
+    private static int analyzeSentimentR(String[] words, int index, ArrayList<String> positiveWords, ArrayList<String> negativeWords) {
         if (index >= words.length) {
             return 0;
         }
@@ -44,6 +44,6 @@ public class SentimentAnalyzer {
         if (positiveWords.contains(words[index])) currentScore = 1;
         else if (negativeWords.contains(words[index])) currentScore = -1;
         
-        return currentScore + analyzeSentimentRecursive(words, index + 1, positiveWords, negativeWords);
+        return currentScore + analyzeSentimentR(words, index + 1, positiveWords, negativeWords);
     }
 } 
