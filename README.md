@@ -1,6 +1,6 @@
 # ChatSentimentAnalyzer
 
-2025 CSA Final Project
+2025 CSA Final Project by David Yang, University of Toronto Schools.
 
 ## Hot It Works
 
